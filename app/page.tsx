@@ -1,11 +1,19 @@
 import Link from "next/link";
+
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-         <Link href="/about">About</Link>
-         <Link href="/casino">Casino</Link>
-      </main>
-    </div>
+    <main className="flex min-h-screen flex-col items-center justify-center p-24">
+      <h1 className="text-5xl font-bold mb-8">Welcome to My App</h1>
+      <p className="mb-4 text-lg">Please login or register to continue.</p>
+      
+      <div className="flex gap-4">
+        <Link href="/login" className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
+          Login
+        </Link>
+        <Link href="/register" className="px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition">
+          Register
+        </Link>
+      </div>
+    </main>
   );
 }
