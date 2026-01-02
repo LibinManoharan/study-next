@@ -4,16 +4,11 @@ const dotenv = require('dotenv');
 const fs = require('fs');
 const path = require('path');
 
-// Try to load .env, fallback to env.sample if .env doesn't exist for dev convenience (optional, but good for now)
+// Try to load .env, fallback to env.sample
 const envPath = path.join(__dirname, '../.env');
 if (fs.existsSync(envPath)) {
     dotenv.config({ path: envPath });
 } else {
-    // If .env is blocked or missing, we can try to warn or just use defaults/process.env
-    // For this environment, we might manually load env.sample if .env is missing, 
-    // but typically we rely on the user creating .env. 
-    // I will try to load from env.sample just for this session if .env is missing,
-    // although strictly dotenv doesn't parse 'env.sample' automatically without help.
     const samplePath = path.join(__dirname, '../env.sample');
     if (fs.existsSync(samplePath)) {
         dotenv.config({ path: samplePath });
@@ -40,12 +35,8 @@ const connectMongoDB = async () => {
     }
 };
 
-// Initialize MySQL Table if appropriate (Basic check)
 const initMySQL = async () => {
     try {
-        // Create DB if not exists (needs root access usually, might fail if user restricts)
-        // We'll skip DB creation and assume it exists or fail gracefully.
-        // But we should create the table.
         const connection = await mysqlPool.getConnection();
         await connection.query(`
             CREATE TABLE IF NOT EXISTS users (

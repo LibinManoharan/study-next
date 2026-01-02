@@ -58,16 +58,13 @@ exports.register = async (req, res) => {
 
 exports.login = async (req, res) => {
     try {
-        const { email, password } = req.body;
+        const { identifier, password } = req.body; // Changed email to identifier
 
-        if (!email || !password) {
-            return res.status(400).json({ message: 'Please provide email and password' });
+        if (!identifier || !password) {
+            return res.status(400).json({ message: 'Please provide username/email and password' });
         }
 
-        const user = await User.findByEmail(email);
-        // Note: user object keys will depend on how mysql driver returns them. 
-        // With 'mysql2' and standard settings, it usually preserves case from query or schema.
-        // Schema is uppercase, so keys might be USER_ID, EMAIL, PASSWORD etc.
+        const user = await User.findByIdentifier(identifier); // Use new method
         
         if (!user) {
             return res.status(400).json({ message: 'Invalid credentials' });

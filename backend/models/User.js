@@ -23,6 +23,14 @@ class User {
         return result.insertId;
     }
 
+    static async findByIdentifier(identifier) {
+        const [rows] = await mysqlPool.execute(
+            'SELECT * FROM users WHERE EMAIL = ? OR USERNAME = ?',
+            [identifier, identifier]
+        );
+        return rows[0];
+    }
+
     static async findByEmail(email) {
         const [rows] = await mysqlPool.execute(
             'SELECT * FROM users WHERE EMAIL = ?',
