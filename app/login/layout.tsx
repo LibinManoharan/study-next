@@ -11,12 +11,14 @@ export default function LoginLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="min-h-screen flex flex-col" suppressHydrationWarning>
-      <div className="flex-1">
+    <div className="h-screen flex flex-col bg-black overflow-hidden" suppressHydrationWarning>
+      <div className="flex-1 relative transition-all duration-500">
         {children}
       </div>
-      <footer className="py-4 text-center text-gray-500 bg-white border-t">
-        My Website Footer @ 2026
+      <footer className="py-4 text-center text-gray-500 bg-black border-t border-white/5 relative z-30">
+        <p className="text-xs tracking-widest font-medium opacity-50 hover:opacity-100 transition-opacity">
+          © 2026 ANTIGRAVITY ENTERPRISE • ALL RIGHTS RESERVED
+        </p>
       </footer>
     </div>
   );
