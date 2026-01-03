@@ -83,11 +83,14 @@ exports.login = async (req, res) => {
         );
 
         // Log the login to MongoDB
-        await Log.create({
-            userId: (user.USER_ID || user.id).toString(),
-            action: 'LOGIN',
-            ip: req.ip
-        });
+        const userId = user.USER_ID || user.id;
+        if (userId) {
+            await Log.create({
+                userId: userId.toString(),
+                action: 'LOGIN',
+                ip: req.ip
+            });
+        }
 
         res.json({ 
             token, 
@@ -98,7 +101,7 @@ exports.login = async (req, res) => {
             } 
         });
     } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: 'Server error' });
+        console.error('Login Error:', error); // Improved logging
+        res.status(500).json({ message: 'Server error', detail: error.message });
     }
 };
