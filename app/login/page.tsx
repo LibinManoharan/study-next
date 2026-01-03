@@ -74,13 +74,6 @@ export default function Home() {
                             />
                         </div>
                         
-                        <div className="flex items-center justify-between text-sm mb-2">
-                            <label className="flex items-center gap-2 text-gray-400 cursor-pointer group">
-                                <input type="checkbox" className="w-4 h-4 rounded border-white/10 bg-white/5 checked:bg-blue-600 outline-none transition-all" />
-                                <span className="group-hover:text-gray-300 transition-colors">Remember me</span>
-                            </label>
-                            <a href="#" className="text-blue-400 hover:text-blue-300 transition-colors font-medium">Forgot password?</a>
-                        </div>
 
                         <button 
                             type="submit" 
@@ -90,9 +83,6 @@ export default function Home() {
                         </button>
                     </form>
 
-                    <p className="mt-8 text-center text-gray-500 text-sm">
-                        Don't have an account? <a href="/register" className="text-white hover:text-blue-400 transition-colors font-semibold">Sign up</a>
-                    </p>
                 </div>
             </div>
 
@@ -106,9 +96,9 @@ export default function Home() {
                     className="object-cover opacity-60"
                     priority
                 />
-                <div className="absolute inset-x-0 bottom-0 p-16 z-20 bg-gradient-to-t from-black to-transparent">
-                    <div className="max-w-md">
-                        <div className="w-12 h-1 bg-blue-500 mb-6 rounded-full"></div>
+                <div className="absolute inset-0 flex items-center justify-center p-16 z-20 bg-gradient-to-t from-black/60 to-transparent">
+                    <div className="max-w-md text-center">
+                        <div className="w-12 h-1 bg-blue-500 mb-6 rounded-full mx-auto"></div>
                         <h3 className="text-5xl font-black text-white mb-6 leading-tight">Elevate Your Performance.</h3>
                         <p className="text-gray-400 text-lg leading-relaxed">Experience a faster, more secure way to manage your enterprise operations with our next-generation dashboard.</p>
                     </div>
