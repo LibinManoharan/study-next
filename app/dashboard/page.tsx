@@ -23,7 +23,7 @@ export default function Dashboard() {
     useEffect(() => {
         const token = localStorage.getItem('token');
         if (!token) {
-            router.push('/login');
+            router.push('/');
         }
     }, [router]);
 
@@ -47,7 +47,7 @@ export default function Dashboard() {
 
     const handleLogout = () => {
         localStorage.removeItem('token');
-        router.push('/login');
+        router.push('/');
     };
 
     return (
